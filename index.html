@@ -3,63 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>Świtezianka – lapbook</title>
-<style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-    background: linear-gradient(180deg, #0f172a, #020617);
-    color: #e5e7eb;
-    line-height: 1.6;
-    scroll-behavior: smooth;
-}
-header {
-    background: #020617;
-    padding: 40px 20px;
-    text-align: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-}
-section {
-    max-width: 900px;
-    margin: auto;
-    padding: 40px 20px;
-}
-h1, h2, h3 {
-    color: #38bdf8;
-}
-.box {
-    background: #020617;
-    padding: 25px;
-    border-radius: 12px;
-    margin: 20px 0;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    transform: translateY(30px);
-    opacity: 0;
-    transition: transform 0.8s ease, opacity 0.8s ease;
-}
-.box.visible {
-    transform: translateY(0);
-    opacity: 1;
-}
-img {
-    border-radius: 10px;
-    max-width: 100%;
-    height: auto;
-    transition: transform 0.5s ease;
-}
-img:hover {
-    transform: scale(1.05);
-}
-footer {
-    background: #020617;
-    text-align: center;
-    padding: 15px;
-    font-size: 14px;
-    color: #94a3b8;
-}
-</style>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(180deg, #0f172a, #020617);
+            color: #e5e7eb;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        header {
+            background: #020617;
+            padding: 40px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        section {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+        h1, h2, h3 {
+            color: #38bdf8;
+        }
+        .box {
+            background: #020617;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transform: translateY(30px);
+            opacity: 0;
+            transition: transform 0.8s ease, opacity 0.8s ease;
+        }
+        .box.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        img {
+            border-radius: 10px;
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            background: #020617;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+    </style>
 </head>
 <body>
 
@@ -75,22 +75,20 @@ footer {
         <p>
             „Świtezianka” to ballada napisana przez Adama Mickiewicza.
             Utwór powstał w epoce romantyzmu. Opowiada historię,
-            w której świat realny łączy się z fantastyką.
+            w której świat realny łączy się z fantastycznym.
         </p>
     </div>
 
-<h2>O czym jest ballada?</h2>
-<div class="box" style="display: flex; align-items: center; gap: 20px;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Switez_lake.jpg" alt="Jezioro Świteź" style="width:300px; border-radius:10px;">
-    <p>
-        Ballada opowiada o młodym chłopcu, który spotyka dziewczynę
-        nad jeziorem Świteź. Chłopak obiecuje jej wierność,
-        ale później zdradza ją z inną dziewczyną.
-        Okazuje się, że tajemnicza dziewczyna nie była zwykłym człowiekiem.
-        To właśnie nad tym jeziorem rozgrywa się cała historia. :contentReference[oaicite:2]{index=2}
-    </p>
-</div>
-
+    <h2>O czym jest ballada?</h2>
+    <div class="box" style="display: flex; align-items: center; gap: 20px;">
+        <img src="https://www.globtroter.pl/zdjecia/bialorus/b212080_bialorus_nowogrodek_jezioro_switez.jpg" alt="Jezioro Świteź" style="width:300px; border-radius:10px;">
+        <p>
+            Ballada opowiada o młodym chłopcu, który spotyka dziewczynę
+            nad jeziorem Świteź. Chłopak obiecuje jej wierność,
+            ale później zdradza ją z inną dziewczyną.
+            Okazuje się, że tajemnicza dziewczyna nie była zwykłym człowiekiem.
+        </p>
+    </div>
 
     <h2>Bohaterowie</h2>
     <div class="box">
@@ -163,6 +161,23 @@ footer {
 <footer>
     © 2025 | Lapbook – „Świtezianka”
 </footer>
+
+<script>
+const boxes = document.querySelectorAll('.box');
+
+function revealBoxes() {
+    for (let box of boxes) {
+        const top = box.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (top < windowHeight - 100) {
+            box.classList.add('visible');
+        }
+    }
+}
+
+window.addEventListener('scroll', revealBoxes);
+window.addEventListener('load', revealBoxes);
+</script>
 
 </body>
 </html>
