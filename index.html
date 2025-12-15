@@ -8,7 +8,7 @@
             margin: 0;
             font-family: 'Segoe UI', Tahoma, sans-serif;
             background: linear-gradient(180deg, #0f172a, #020617);
-            color: #ffffff;
+            color: #e5e7eb;
             line-height: 1.6;
             scroll-behavior: smooth;
         }
@@ -30,10 +30,6 @@
             color: #38bdf8;
         }
         .box {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 20px;
             background: #020617;
             padding: 25px;
             border-radius: 12px;
@@ -84,7 +80,7 @@
     </div>
 
     <h2>O czym jest ballada?</h2>
-    <div class="box" style="display: flex; align-items: center; gap: 20px;">
+    <div class="box" style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px;">
         <img src="https://www.globtroter.pl/zdjecia/bialorus/b212080_bialorus_nowogrodek_jezioro_switez.jpg" alt="Jezioro Świteź" style="width:300px; border-radius:10px;">
         <p>
             Ballada opowiada o młodym chłopcu, który spotyka dziewczynę
@@ -171,10 +167,14 @@ const boxes = document.querySelectorAll('.box');
 
 function revealBoxes() {
     for (let box of boxes) {
-        const top = box.getBoundingClientRect().top;
+        const rect = box.getBoundingClientRect();
         const windowHeight = window.innerHeight;
-        if (top < windowHeight - 100) {
+
+        // Pojawia się, gdy wchodzi w ekran i znika, gdy wychodzi
+        if (rect.top < windowHeight - 100 && rect.bottom > 0) {
             box.classList.add('visible');
+        } else {
+            box.classList.remove('visible');
         }
     }
 }
